@@ -1,0 +1,25 @@
+---
+- name: the tax percentage is $percentage %
+  uid: 043b135f-687b-43b8-8565-69adc83f5d13
+  parameters:
+  - name: percentage
+  body_hash: d41d8cd98f00b204e9800998ecf8427e
+- name: user presses the Enter
+  uid: 18f2612d-b827-4fff-9aaa-e247a8927118
+  parameters: []
+  body_hash: d41d8cd98f00b204e9800998ecf8427e
+- name: the personal wage tax should be returned as $personal_wage_tax
+  uid: 940c9b27-ac4d-4c5f-9106-15aa585c6f20
+  parameters:
+  - name: personal_wage_tax
+  body_hash: d41d8cd98f00b204e9800998ecf8427e
+- name: net salary should be $net_salary
+  uid: e262693a-15b3-4028-9354-f482b6432944
+  parameters:
+  - name: net_salary
+  body_hash: d41d8cd98f00b204e9800998ecf8427e
+- name: the salary of the person is $salary
+  uid: 20d10fb8-0de2-43eb-8f05-1baa9af2f1cf
+  parameters:
+  - name: salary
+  body_hash: d41d8cd98f00b204e9800998ecf8427e
