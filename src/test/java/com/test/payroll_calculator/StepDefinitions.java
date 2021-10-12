@@ -1,34 +1,41 @@
 package com.test.payroll_calculator;
 
+import com.example.payroll_calculator.PayrollCalculator;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class StepDefinitions {
-    public Actionwords actionwords = new Actionwords();
+import static org.junit.Assert.*;
 
-    @Given("^the tax percentage is \\$percentage % \"(.*)\"$")
-    public void theTaxPercentageIsPercentage(String percentage) {
-        actionwords.theTaxPercentageIsPercentage(percentage);
+public class StepDefinitions {
+
+    private final PayrollCalculator calculator = new PayrollCalculator();
+
+
+    @Given("the gross salary of the person is {int}")
+    public void theGrossSalaryOfThePersonIs(int gross_salary) {
+        calculator.setGrossSalary(gross_salary);
+    }
+
+    @And("the tax percentage is {int}")
+    public void theTaxPercentageIsTax_percentage(int tax_percentage) {
+        calculator.setTaxPercentage(tax_percentage);
     }
 
     @When("^user presses the Enter$")
     public void userPressesTheEnter() {
-        actionwords.userPressesTheEnter();
+        calculator.printInfo();
     }
 
-    @Then("^the personal wage tax should be returned as \\$personal_wage_tax \"(.*)\"$")
-    public void thePersonalWageTaxShouldBeReturnedAsPersonalWageTax(String personalWageTax) {
-        actionwords.thePersonalWageTaxShouldBeReturnedAsPersonalWageTax(personalWageTax);
+    @Then("the personal wage tax should be returned as {double}")
+    public void thePersonalWageTaxShouldBeReturnedAsPersonal_wage_tax(double personal_wage_tax) {
+        assertEquals(personal_wage_tax, calculator.calculate_personal_wage_tax(), 1e-15);
     }
 
-    @Then("^net salary should be \\$net_salary \"(.*)\"$")
-    public void netSalaryShouldBeNetSalary(String netSalary) {
-        actionwords.netSalaryShouldBeNetSalary(netSalary);
+    @And("net salary should be {double}")
+    public void netSalaryShouldBeNet_salary(double net_salary) {
+        assertEquals(net_salary, calculator.calculate_net_salary(), 1e-15);
     }
 
-    @Given("^the salary of the person is \\$salary \"(.*)\"$")
-    public void theSalaryOfThePersonIsSalary(String salary) {
-        actionwords.theSalaryOfThePersonIsSalary(salary);
-    }
 }

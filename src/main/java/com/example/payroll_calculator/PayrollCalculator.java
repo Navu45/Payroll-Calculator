@@ -1,31 +1,28 @@
 package com.example.payroll_calculator;
 
 public class PayrollCalculator {
-    private int tax_percentage;
-    private double salary;
+    private int taxPercentage;
+    private double grossSalary;
 
-    public int getTax_percentage() {
-        return tax_percentage;
+
+    public void setTaxPercentage(int taxPercentage) {
+        this.taxPercentage = taxPercentage;
     }
 
-    public void setTax_percentage(int tax_percentage) {
-        this.tax_percentage = tax_percentage;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
-    public PayrollCalculator(int tax_percentage, double salary) {
-        this.tax_percentage = tax_percentage;
-        this.salary = salary;
+    public void setGrossSalary(double grossSalary) {
+        this.grossSalary = grossSalary;
     }
 
     public double calculate_personal_wage_tax() {
-        return tax_percentage * salary / 100;
+        return taxPercentage * grossSalary / 100;
+    }
+
+    public double calculate_net_salary() {
+        return (100 - taxPercentage) * grossSalary / 100;
+    }
+
+    public void printInfo() {
+        System.out.println("Personal wage tax is " + calculate_personal_wage_tax() + "$");
+        System.out.println("Net salary is " + calculate_net_salary() + "$");
     }
 }
